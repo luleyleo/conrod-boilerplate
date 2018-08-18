@@ -4,3 +4,7 @@ version = "0.1.0"
 authors = ["Leopold Luley <acc@leopoldluley.de>"]
 
 [dependencies]
+conrod = { version = "0.61.1", features = ["winit", "glium"] }
+conrod_derive = "0.1.2"
+# You can use any font you like but this works well for lazy people (like me)
+ttf-noto-sans = "0.1.1"
