@@ -1,0 +1,6 @@
+[package]
+name = "conrod-boilerplate"
+version = "0.1.0"
+authors = ["Leopold Luley <acc@leopoldluley.de>"]
+
+[dependencies]
