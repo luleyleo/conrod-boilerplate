@@ -7,6 +7,7 @@ widget_ids!(struct Ids {
 
 pub struct State {
     ids: Ids,
+    clicks: usize,
 }
 
 #[derive(WidgetCommon)]
@@ -30,6 +31,7 @@ impl Widget for App {
     fn init_state(&self, id_gen: widget::id::Generator) -> Self::State {
         State {
             ids: Ids::new(id_gen),
+            clicks: 0,
         }
     }
 
@@ -51,14 +53,19 @@ impl Widget for App {
             .wh_of(id)
             .set(state.ids.canvas, ui);
 
+
+        // For performance reasons this string should be cached in the state
+        // (it can be created 60 times per second) but I want to keep this simple
+        let label = format!("Clicked {} times", state.clicks);
+
         for _click in widget::Button::new()
             .parent(state.ids.canvas)
             .middle_of(state.ids.canvas)
             .w_h(200.0, 100.0)
-            .label("Press Me!")
+            .label(&label)
             .set(state.ids.button, ui)
         {
-            println!("Yaaay!");
+            state.update(|state| state.clicks += 1);
         }
     }
 
