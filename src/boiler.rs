@@ -5,7 +5,7 @@ use eventloop::EventLoop;
 
 use ttf_noto_sans;
 
-use app::App;
+use components::App;
 use conrod::Widget;
 
 static TITLE: &str = "My cool app";
